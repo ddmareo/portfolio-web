@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+import universityLogo from "../../public/univlogo.png";
+import collegeLogo from "../../public/schoollogo.png";
+
+interface Education {
+  institution: string;
+  logo: ImageMetadata;
+  degree: string;
+  fieldOfStudy: string;
+  startDate: string;
+  endDate: string;
+  description: string[];
+  location: string;
+}
+
+const educationHistory: Education[] = [
+  {
+    institution: "President University",
+    logo: universityLogo as ImageMetadata,
+    degree: "Bachelor of Technology",
+    fieldOfStudy: "Information Technology",
+    startDate: "2022",
+    endDate: "2025",
+    description: [
+      "Achieved a high GPA of 3.79",
+      "Contributed to multiple projects related to Artificial Intelligence and Web Development",
+      "Served on the committee for several campus events",
+    ],
+    location: "North Cikarang, West Java",
+  },
+  {
+    institution: "John Paul's School",
+    logo: collegeLogo as ImageMetadata,
+    degree: "High School Diploma",
+    fieldOfStudy: "Natural Science",
+    startDate: "2016",
+    endDate: "2022",
+    description: [
+      "Focused on software development, algorithms, and data structures",
+    ],
+    location: "Bekasi Regency, West Java",
+  },
+];
+---
+
+<section
+  id="education"
+  class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My background</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Education</h3>
+
+    <div class="space-y-8">
+      {
+        educationHistory.map((education) => (
+          <div class="bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-xl p-6 transition-all hover:shadow-xl">
+            <div class="flex flex-col md:flex-row md:items-start gap-4">
+              <div class="flex-shrink-0 mr-1">
+                <div class="size-16 md:size-20 bg-white rounded-lg overflow-hidden flex items-center justify-center p-1">
+                  <Image
+                    src={education.logo}
+                    alt={`${education.institution} logo`}
+                    class="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              <div class="flex-grow">
+                <h4 class="text-xl md:text-2xl font-semibold">
+                  {education.institution}
+                </h4>
+                <p class="text-lg font-medium text-[var(--white)]">
+                  {education.degree}, {education.fieldOfStudy}
+                </p>
+
+                <div class="flex flex-col md:flex-row md:items-center text-[var(--white-icon)] mt-1 mb-3 text-sm">
+                  <span>
+                    {education.startDate} - {education.endDate}
+                  </span>
+                  <span class="hidden md:inline-block mx-2">•</span>
+                  <span>{education.location}</span>
+                </div>
+
+                <div class="text-[var(--white)] mt-3">
+                  <ul class="list-disc pl-5 space-y-1">
+                    {education.description.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
