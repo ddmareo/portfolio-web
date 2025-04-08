@@ -1,13 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import universityLogo from "../../public/univlogo.png";
-import collegeLogo from "../../public/schoollogo.png";
+import alvaLogo from "../../public/alvaautologo.png";
 
 interface Experience {
-  institution: string;
+  position: string;
   logo: ImageMetadata;
-  degree: string;
-  fieldOfStudy: string;
+  company: string;
   startDate: string;
   endDate: string;
   description: string[];
@@ -16,30 +14,16 @@ interface Experience {
 
 const experienceHistory: Experience[] = [
   {
-    institution: "President University",
-    logo: universityLogo as ImageMetadata,
-    degree: "Bachelor of Technology",
-    fieldOfStudy: "Information Technology",
-    startDate: "2022",
-    endDate: "2025",
+    position: "Manufacturing Technology Intern",
+    logo: alvaLogo as ImageMetadata,
+    company: "PT. Electra Mobilitias Indonesia (ALVA)",
+    startDate: "Sep 2024",
+    endDate: "Present",
     description: [
-      "Achieved a high GPA of 3.79",
-      "Contributed to multiple projects related to Artificial Intelligence and Web Development",
-      "Served on the committee for several campus events",
+      "Contributed to several web-based projects, collaborating on both backend workflows and frontend development",
+      "Collaborated with the team to discuss and refine business processes",
     ],
-    location: "North Cikarang, West Java",
-  },
-  {
-    institution: "John Paul's School",
-    logo: collegeLogo as ImageMetadata,
-    degree: "High School Diploma",
-    fieldOfStudy: "Natural Science",
-    startDate: "2016",
-    endDate: "2022",
-    description: [
-      "Focused on software development, algorithms, and data structures",
-    ],
-    location: "Bekasi Regency, West Java",
+    location: "South Cikarang, West Java",
   },
 ];
 ---
@@ -49,7 +33,7 @@ const experienceHistory: Experience[] = [
   class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
   <div class="max-w-5xl mx-auto px-4">
     <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My career</h2>
-    <h3 class="text-4xl md:text-5xl font-medium mb-8">Work Experience</h3>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Experience</h3>
 
     <div class="space-y-8">
       {
@@ -60,7 +44,7 @@ const experienceHistory: Experience[] = [
                 <div class="size-16 md:size-20 bg-white rounded-lg overflow-hidden flex items-center justify-center p-1">
                   <Image
                     src={experience.logo}
-                    alt={`${experience.institution} logo`}
+                    alt={`${experience.company} logo`}
                     class="w-full h-full object-contain"
                   />
                 </div>
@@ -68,10 +52,10 @@ const experienceHistory: Experience[] = [
 
               <div class="flex-grow">
                 <h4 class="text-xl md:text-2xl font-semibold">
-                  {experience.institution}
+                  {experience.position}
                 </h4>
-                <p class="text-lg font-medium text-[var(--white)]">
-                  {experience.degree}, {experience.fieldOfStudy}
+                <p class="text-lg font-normal text-[var(--white)]">
+                  {experience.company}
                 </p>
 
                 <div class="flex flex-col md:flex-row md:items-center text-[var(--white-icon)] mt-1 mb-3 text-sm">

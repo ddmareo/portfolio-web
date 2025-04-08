@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import universityLogo from "../../public/univlogo.png";
-import collegeLogo from "../../public/schoollogo.png";
+import schoolLogo from "../../public/jpslogo.png";
 
 interface Education {
   institution: string;
@@ -31,14 +31,12 @@ const educationHistory: Education[] = [
   },
   {
     institution: "John Paul's School",
-    logo: collegeLogo as ImageMetadata,
+    logo: schoolLogo as ImageMetadata,
     degree: "High School Diploma",
     fieldOfStudy: "Natural Science",
     startDate: "2016",
     endDate: "2022",
-    description: [
-      "Focused on software development, algorithms, and data structures",
-    ],
+    description: [],
     location: "Bekasi Regency, West Java",
   },
 ];
@@ -70,7 +68,7 @@ const educationHistory: Education[] = [
                 <h4 class="text-xl md:text-2xl font-semibold">
                   {education.institution}
                 </h4>
-                <p class="text-lg font-medium text-[var(--white)]">
+                <p class="text-lg font-normal text-[var(--white)]">
                   {education.degree}, {education.fieldOfStudy}
                 </p>
 
@@ -82,13 +80,15 @@ const educationHistory: Education[] = [
                   <span>{education.location}</span>
                 </div>
 
-                <div class="text-[var(--white)] mt-3">
-                  <ul class="list-disc pl-5 space-y-1">
-                    {education.description.map((point) => (
-                      <li>{point}</li>
-                    ))}
-                  </ul>
-                </div>
+                {education.description.length > 0 && (
+                  <div class="text-[var(--white)] mt-3">
+                    <ul class="list-disc pl-5 space-y-1">
+                      {education.description.map((point) => (
+                        <li>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           </div>
