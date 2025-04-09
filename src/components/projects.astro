@@ -1,14 +1,13 @@
 ---
 import { Image } from "astro:assets";
-import svgl from "../../public/svgl.png";
-import stockin from "../../public/stockin.png";
+import portfolioWeb from "../../public/portfolio_web.png";
+import geniusClone from "../../public/genius_clone.png";
 import visitorManagementSystem from "../../public/alva_vms.png";
 
 interface Project {
   title: string;
   image: ImageMetadata;
   link: string;
-  preview: string;
   status: string;
 }
 
@@ -17,22 +16,19 @@ const projects: Project[] = [
     title: "Visitor Management System (VMS)",
     image: visitorManagementSystem as ImageMetadata,
     link: "https://github.com/ddmareo/visitor-management-system",
-    preview: "https://movies-for-devs.vercel.app",
     status: "Finished",
   },
   {
-    title: "Genius-Clone",
-    image: stockin as ImageMetadata,
-    link: "https://github.com/ddmareo/portfolio-web",
-    preview: "https://stockin-demo.vercel.app",
-    status: "On Development",
+    title: "Genius-Clone with Google Generative AI",
+    image: geniusClone as ImageMetadata,
+    link: "https://github.com/ddmareo/Genius-Clone",
+    status: "Finished",
   },
   {
-    title: "Svgl.app",
-    image: svgl as ImageMetadata,
-    link: "https://github.com/pheralb/svgl",
-    preview: "https://svgl.app",
-    status: "Contributor",
+    title: "Portfolio Web",
+    image: portfolioWeb as ImageMetadata,
+    link: "https://github.com/ddmareo/portfolio-web",
+    status: "On Development",
   },
 ];
 ---
@@ -48,11 +44,7 @@ const projects: Project[] = [
       {
         projects.map((project) => (
           <div class="group">
-            <a
-              href={project.preview}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block">
+            <a target="_blank" rel="noopener noreferrer" class="block">
               <div class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4">
                 <Image
                   src={project.image}
